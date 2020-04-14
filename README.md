@@ -1,17 +1,29 @@
-Használhatóság:
--A felhasználó költségvetésének a fokozatos nyílántartására alkalmas alkalmazás.
-Funckciók:
--Bevételek és költségek megjelenítése speciális szûrõkkel mint pl
-jelenlegi hét, hónap, év, összes, legnagyobb összeg, legkisebb összeg,
-kiadások, bevételek
--Kiadás és bevétel hozzáadása
--Havi vagy rendszeres bevétel hozzáadása, ami autómatikusan kerül felszámolásra
--Statisztika készítésére is alkalmas, megtekinthetjük, hogy az adott hónapban
-mennyi pénzünk maradt, és mennyi idõ van hétra a következõ bevételig,
-valamint arra is lehetõség van, hogy megtudjuk hogy az adott héten mennyit
-költhetünk átlagosan a hónapon belül, és jelez ha túl sokat költöttünk
--Felhasználók közötti költségmegosztás
-Belépés és autentikáció:
--Az oldalra lehet regisztrálni, és regisztráció után, a megadott jelszóval és
-felhasználónévvel lehet bejelentkezni. Ezek utána a felhasználó elérheti a
-saját adatait
+**HasznÃ¡lhatÃ³sÃ¡g:**
+
+-A felhasznÃ¡lÃ³ kÃ¶ltsÃ©gvetÃ©sÃ©nek a fokozatos nyÃ­lÃ¡ntartÃ¡sÃ¡ra alkalmas alkalmazÃ¡s.
+
+**FunckciÃ³k:**
+
+-BevÃ©telek Ã©s kÃ¶ltsÃ©gek megjelenÃ­tÃ©se speciÃ¡lis szÅ±rÅ‘kkel mint pl 
+    jelenlegi hÃ©t, hÃ³nap, Ã©v, Ã¶sszes, legnagyobb Ã¶sszeg, legkisebb Ã¶sszeg, 
+    kiadÃ¡sok, bevÃ©telek
+    
+-KiadÃ¡s Ã©s bevÃ©tel hozzÃ¡adÃ¡sa
+
+-Havi vagy rendszeres bevÃ©tel hozzÃ¡adÃ¡sa, ami autÃ³matikusan kerÃ¼l felszÃ¡molÃ¡sra
+
+-Statisztika kÃ©szÃ­tÃ©sÃ©re is alkalmas, megtekinthetjÃ¼k, hogy az adott hÃ³napban
+    mennyi pÃ©nzÃ¼nk maradt, Ã©s mennyi idÅ‘ van hÃ©tra a kÃ¶vetkezÅ‘ bevÃ©telig, 
+    valamint arra is lehetÅ‘sÃ©g van, hogy megtudjuk hogy az adott hÃ©ten mennyit
+    kÃ¶lthetÃ¼nk Ã¡tlagosan a hÃ³napon belÃ¼l, Ã©s jelez ha tÃºl sokat kÃ¶ltÃ¶ttÃ¼nk
+    
+-FelhasznÃ¡lÃ³k kÃ¶zÃ¶tti kÃ¶ltsÃ©gmegosztÃ¡s
+
+BelÃ©pÃ©s Ã©s autentikÃ¡ciÃ³:
+
+-Az oldalra lehet regisztrÃ¡lni, Ã©s regisztrÃ¡ciÃ³ utÃ¡n, a megadott jelszÃ³val Ã©s 
+    felhasznÃ¡lÃ³nÃ©vvel lehet bejelentkezni. Ezek utÃ¡na a felhasznÃ¡lÃ³ elÃ©rheti a 
+    sajÃ¡t adatait
+
+
+
