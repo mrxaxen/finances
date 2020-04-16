@@ -6,7 +6,7 @@
 package hu.elte.finances.controllers;
 
 import hu.elte.finances.entities.Transactions;
-import hu.elte.finances.reposittories.TransactionsRepository;
+import hu.elte.finances.repositories.TransactionsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

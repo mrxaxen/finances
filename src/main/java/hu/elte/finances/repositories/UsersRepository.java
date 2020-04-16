@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hu.elte.finances.reposittories;
+package hu.elte.finances.repositories;
 
-import hu.elte.finances.entities.PeriodicChanges;
+import hu.elte.finances.entities.Users;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Xaxen
  */
-public interface PeriodicChangesRepository extends CrudRepository<PeriodicChanges, Long>{
+public interface UsersRepository extends CrudRepository<Users,Long> {
     
 }

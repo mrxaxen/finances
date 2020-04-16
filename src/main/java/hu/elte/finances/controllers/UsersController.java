@@ -6,9 +6,10 @@
 package hu.elte.finances.controllers;
 
 import hu.elte.finances.entities.Users;
-import hu.elte.finances.reposittories.UsersRepository;
+import hu.elte.finances.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,11 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Xaxen
  */
-@RestController
+@Controller
 @RequestMapping("users")
 public class UsersController {
     @Autowired
     private UsersRepository usersRepository;
+
+    @RequestMapping("/")
+    public String home(){
+        return "home.jsp";
+    }
     
     @GetMapping("")
     public ResponseEntity<Iterable<Users>> getAll() {
