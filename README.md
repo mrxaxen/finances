@@ -111,3 +111,6 @@ Biztonsági beállítások
 
     hu.elte.finances.security
 
+Adatbázis UML diagram
+
+https://github.com/mrxaxen/finances/blob/develop/finances_diagram3.jpg
