@@ -29,45 +29,85 @@ Belépés és autentikáció:
 **Backend dokumentáció:**
 
 Fejlesztői nyelv
-o	java
+
+	java
+
 Framework
-o	spring boot
+
+	spring boot
+
 Használt dependenciák
-o	JPA
-o	DevTools
-o	H2
-o	Lombok
-o	Web
-o	Security
+
+	JPA
+
+  	DevTools
+
+    H2
+
+    Lombok
+   
+    Web
+
+    Security
+
+
 Adatbázis
-o	H2
+
+    H2
+
 Adatbázis név
-o	mydb
+   
+   mydb
+
 Adatbázis elérése
-o	http://localhost:8080/h2
+
+	http://localhost:8080/h2
+
 Websecurity beállítása
-o	web.ignoring().antMatchers("/h2/");
+
+    web.ignoring().antMatchers("/h2/");
+
 Autentikáció
-o	felhasználónevek
-	    user1
-	    user2
-	    admin
-o	jelszó
-	    user1Pass
-	    user2Pass
-	    adminPass
-o	szerepek
-	    USER
-	    USER
-	    ADMIN
+
+	felhasználónevek
+
+	    user1
+
+	    user2
+
+	    admin
+
+	jelszó
+
+	    user1Pass
+
+	    user2Pass
+
+	    adminPass
+
+	szerepek
+
+	    USER
+
+	    USER
+
+	    ADMIN
 
 Könyvtárszerkezetek:
+
 Kontrollerek
-o	hu.elte.finances.controllers
+
+	hu.elte.finances.controllers
+
 Entitások
-o	hu.elte.finances.entities
+
+    hu.elte.finances.entities
+
 Repository-k
-o	hu.elte.finances.repositories
+
+	hu.elte.finances.repositories
+
 Biztonsági beállítások
-o	hu.elte.finances.security
+
+    hu.elte.finances.security
 
