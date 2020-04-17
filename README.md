@@ -1,6 +1,6 @@
 **Használhatóság:**
 
-	A felhasználó költségvetésének a fokozatos nyílvántartására alkalmas alkalmazás.
+-A felhasználó költségvetésének a fokozatos nyílántartására alkalmas alkalmazás.
 
 **Funckciók:**
 
@@ -25,15 +25,6 @@ Belépés és autentikáció:
     felhasználónévvel lehet bejelentkezni. Ezek után a felhasználó elérheti a 
     saját adatait
 
-Szerepkörök:
-
-	Eszter Gábor
-	
-		Entitások, controllerek, repositorik, Endpontok létrehozása
-
-	Kovács Attila
-		
-		Dokumentáció frissítés, adatbázis megtervezése, UMl diagram létrhozása
 
 **Backend dokumentáció:**
 
@@ -102,7 +93,7 @@ Autentikáció
 
 	    ADMIN
 
-**Könyvtárszerkezetek:**
+Könyvtárszerkezetek:
 
 Kontrollerek
 
@@ -120,6 +111,12 @@ Biztonsági beállítások
 
     hu.elte.finances.security
 
-**Adatbázis UML diagram**
+Adatbázis UML diagram
 
-	https://github.com/mrxaxen/finances/blob/develop/finances_diagram3.jpg
+https://github.com/mrxaxen/finances/blob/develop/finances_diagram3.jpg
+
+### TransactionController search endpoint lefutása:
+ - Az endpoint kap egy GET utasítást egy Transaction példánnyal ami jelen esetben egy blueprintként szolgál, tartalmazza a keresett entitás paramétereit
+ - Ebből készül egy Specification, melynek a toPredicate függvényét felüldefiniáltuk.
+ - A függvényben aszerint hogy milyen paraméterek szerint szeretnénk szűrni(mely paraméterek nem null értékkel szerepelnek a kapott Transaction típusban) Predicate-eket hozunk létre amelyeket egy tömbben tárolunk, majd a függvény végén összefűzzük
+ - A kapott predikátum átadásra kerül a repositorynak ami felhúz az adatbázisból minden olyan Transaction entitást amelyekre teljesülnek a Predicateben előírt feltételek
