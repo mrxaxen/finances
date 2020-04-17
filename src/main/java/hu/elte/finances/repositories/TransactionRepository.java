@@ -5,13 +5,13 @@
  */
 package hu.elte.finances.repositories;
 
-import hu.elte.finances.entities.Transactions;
+import hu.elte.finances.entities.Transaction;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Xaxen
  */
-public interface TransactionsRepository extends CrudRepository<Transactions, Long>{
+public interface TransactionRepository extends CrudRepository<Transaction, Long>{
     
 }

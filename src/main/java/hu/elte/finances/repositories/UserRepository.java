@@ -5,13 +5,13 @@
  */
 package hu.elte.finances.repositories;
 
-import hu.elte.finances.entities.Users;
+import hu.elte.finances.entities.User;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Xaxen
  */
-public interface UsersRepository extends CrudRepository<Users,Long> {
+public interface UserRepository extends CrudRepository<User,Long> {
     
 }

@@ -5,32 +5,26 @@
  */
 package hu.elte.finances.controllers;
 
-import hu.elte.finances.entities.Users;
-import hu.elte.finances.repositories.UsersRepository;
+import hu.elte.finances.entities.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import hu.elte.finances.repositories.TransactionRepository;
 
 /**
  *
  * @author Xaxen
  */
-@Controller
-@RequestMapping("users")
-public class UsersController {
+@RestController
+@RequestMapping("transactions")
+public class TransactionController {
     @Autowired
-    private UsersRepository usersRepository;
-
-    @RequestMapping("/")
-    public String home(){
-        return "home.jsp";
-    }
+    private TransactionRepository transactionsRepository;
     
     @GetMapping("")
-    public ResponseEntity<Iterable<Users>> getAll() {
-        return ResponseEntity.ok(usersRepository.findAll());
+    public ResponseEntity<Iterable<Transaction>> getAll() {
+        return ResponseEntity.ok(transactionsRepository.findAll());
     }
 }

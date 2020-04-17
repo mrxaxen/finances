@@ -5,26 +5,32 @@
  */
 package hu.elte.finances.controllers;
 
-import hu.elte.finances.entities.PeriodicChanges;
-import hu.elte.finances.repositories.PeriodicChangesRepository;
+import hu.elte.finances.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import hu.elte.finances.repositories.UserRepository;
 
 /**
  *
  * @author Xaxen
  */
-@RestController
-@RequestMapping("periodic_changes")
-public class PeriodicChangesController {
+@Controller
+@RequestMapping("users")
+public class UserController {
     @Autowired
-    private PeriodicChangesRepository periodicChangesRepository;
+    private UserRepository usersRepository;
+
+    @RequestMapping("/")
+    public String home(){
+        return "home.jsp";
+    }
     
     @GetMapping("")
-    public ResponseEntity<Iterable<PeriodicChanges>> getAll() {
-        return ResponseEntity.ok(periodicChangesRepository.findAll());
+    public ResponseEntity<Iterable<User>> getAll() {
+        return ResponseEntity.ok(usersRepository.findAll());
     }
 }

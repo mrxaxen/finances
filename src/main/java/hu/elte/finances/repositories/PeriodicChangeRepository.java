@@ -5,13 +5,13 @@
  */
 package hu.elte.finances.repositories;
 
-import hu.elte.finances.entities.PeriodicChanges;
+import hu.elte.finances.entities.PeriodicChange;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Xaxen
  */
-public interface PeriodicChangesRepository extends CrudRepository<PeriodicChanges, Long>{
+public interface PeriodicChangeRepository extends CrudRepository<PeriodicChange, Long>{
     
 }

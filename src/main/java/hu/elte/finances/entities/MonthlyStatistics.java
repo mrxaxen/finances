@@ -16,32 +16,32 @@ public class MonthlyStatistics {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @JoinColumn
     @ManyToOne
-    @Column
-    private Users user;
+    private User user;
 
     @Column
-    private int year;
+    private Integer year;
 
     @Column
     private String month;
 
     @Column
-    private int numberOfTransactions;
+    private Integer numberOfTransactions;
 
     @Column
-    private int incomes;
+    private Integer incomes;
 
     @Column
-    private int expenses;
+    private Integer expenses;
 
     /**Summed up balance in the end of the month*/
     @Column
-    private int monthlyBalance;
+    private Integer monthlyBalance;
 
     @Column
-    private int amount;
+    private Integer amount;
 
     @Column
-    private int countOfTransfers;
+    private Integer countOfTransfers;
 }
