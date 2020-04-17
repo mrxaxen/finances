@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
@@ -31,13 +32,14 @@ public class PeriodicChangeController {
     public ResponseEntity<PeriodicChange> get(@PathVariable Long id) {
         return ResponseEntity.ok(repository.findById(id).get());
     }
- 
-    @DeleteMapping("/del{id}")
+    
+    @DeleteMapping("/del-{id}")
     public ResponseEntity delete(@PathVariable Long id) {
         repository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
     
+    @PutMapping("/update-{id}")
     public ResponseEntity<PeriodicChange> put(@PathVariable Long id, @RequestBody PeriodicChange newEntity) {
         PeriodicChange entity = repository.findById(id).get();
         if(entity != null){
