@@ -1,6 +1,6 @@
 **Használhatóság:**
 
--A felhasználó költségvetésének a fokozatos nyílántartására alkalmas alkalmazás.
+	A felhasználó költségvetésének a fokozatos nyílvántartására alkalmas alkalmazás.
 
 **Funckciók:**
 
@@ -25,6 +25,15 @@ Belépés és autentikáció:
     felhasználónévvel lehet bejelentkezni. Ezek után a felhasználó elérheti a 
     saját adatait
 
+Szerepkörök:
+
+	Eszter Gábor
+	
+		Entitások, controllerek, repositorik, Endpontok létrehozása
+
+	Kovács Attila
+		
+		Dokumentáció frissítés, adatbázis megtervezése, UMl diagram létrhozása
 
 **Backend dokumentáció:**
 
@@ -93,7 +102,7 @@ Autentikáció
 
 	    ADMIN
 
-Könyvtárszerkezetek:
+**Könyvtárszerkezetek:**
 
 Kontrollerek
 
@@ -111,6 +120,6 @@ Biztonsági beállítások
 
     hu.elte.finances.security
 
-Adatbázis UML diagram
+**Adatbázis UML diagram**
 
-https://github.com/mrxaxen/finances/blob/develop/finances_diagram3.jpg
+	https://github.com/mrxaxen/finances/blob/develop/finances_diagram3.jpg
