@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TransactionListComponent } from '../transaction-list/transaction-list.component';
 import { AddTransactionComponent } from '../add-transaction/add-transaction.component';
 import { ViewReportComponent } from '../view-report/view-report.component';
+import { TransactionDetailsComponent } from '../transaction-details/transaction-details.component'
 
 
 const routes: Routes = [
@@ -23,7 +24,11 @@ const routes: Routes = [
   {
     path: 'view-report',
     component: ViewReportComponent
-},
+  },
+  {
+    path: 'transactions/:id',
+    component: TransactionDetailsComponent
+  },
 ];
 
 
