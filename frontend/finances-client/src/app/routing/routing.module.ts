@@ -6,6 +6,7 @@ import { AddTransactionComponent } from '../add-transaction/add-transaction.comp
 import { ViewReportComponent } from '../view-report/view-report.component';
 import { TransactionDetailsComponent } from '../transaction-details/transaction-details.component'
 import { AuthGuard } from '../auth.guard';
+import { LoginFormComponent } from '../login-form/login-form.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'transactions/:id',
     component: TransactionDetailsComponent
+  },
+  {
+    path: 'login',
+    component: LoginFormComponent
   },
 ];
 
