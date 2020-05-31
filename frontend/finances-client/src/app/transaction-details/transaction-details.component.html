@@ -1,1 +1,10 @@
-<p>transaction-details works!</p>
+<h1 class="display-2">Transaction #{{ transaction.id }} {{transaction.title}}</h1>
+<dl class="row">
+  <dt class="col-sm-3">Amount</dt>
+  <dd class="col-sm-9">{{ transaction.change }}</dd>
+  
+  <dt class="col-sm-3">Creation Date</dt>
+  <dd class="col-sm-9">{{ transaction.creationDate }}</dd>
+</dl>
+<button mat-raised-button routerLink="/transactions">Back</button>
+

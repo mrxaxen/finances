@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Transaction } from '../transaction';
+import { TransactionService } from '../transaction.service'
+import { ActivatedRoute, ParamMap } from "@angular/router";
+
 
 @Component({
   selector: 'transaction-details',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionDetailsComponent implements OnInit {
 
-  constructor() { }
+  transaction: Transaction = null;
 
-  ngOnInit(): void {
+  constructor(
+    private route: ActivatedRoute,
+    private transactionService: TransactionService
+  ) { }
+  
+  ngOnInit() {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.transaction = this.transactionService.getTransaction(id);
   }
-
 }
