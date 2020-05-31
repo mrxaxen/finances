@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Transaction } from '../transaction';
+import { TransactionService } from '../transaction.service'
 
 @Component({
   selector: 'transaction-list',
@@ -7,18 +8,9 @@ import { Transaction } from '../transaction';
   styleUrls: ['./transaction-list.component.css']
 })
 export class TransactionListComponent{
-  transactions:Transaction[]=[
-    {
-      id:1,
-      title:'Bills',
-      change:-1000,
-      creationDate:'2020.01.22',
-    },
-    {
-      id:2,
-      title:'Salary',
-      change:10000,
-      creationDate:'2020.01.22',
-    },
-  ];
+  private transactions:Transaction[]=[];
+  constructor(
+    private transactionService:TransactionService ){ 
+      this.transactions = transactionService.getTransactions();
+    };
 }
