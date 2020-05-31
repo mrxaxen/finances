@@ -22,9 +22,7 @@ export class TransactionListComponent{
 
   onFormSubmit(transaction: Transaction) {
     if (transaction.id > 0) {
-      this.selectedTransaction.title = transaction.title;
-      this.selectedTransaction.change = transaction.change;
-      this.selectedTransaction.creationDate = transaction.creationDate;
+      this.transactionService.updateTransaction(transaction);
     } 
     this.selectedTransaction = null;
   }

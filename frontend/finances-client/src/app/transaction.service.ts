@@ -31,4 +31,13 @@ export class TransactionService {
     return this.transactions.find(i => i.id === id);
   }
 
+  updateTransaction(updateTransaction:Transaction) :void{
+    let transaction=this.getTransaction(updateTransaction.id);
+    if(transaction){
+      transaction.title=updateTransaction.title;
+      transaction.change=updateTransaction.change;
+      transaction.creationDate=updateTransaction.creationDate;
+    }
+  }
+
 }
