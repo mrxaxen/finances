@@ -71,23 +71,17 @@ Autentikáció
 
 	felhasználónevek
 
-	    user1
-
-	    user2
+	    user
 
 	    admin
 
 	jelszó
 
-	    user1Pass
+	    password
 
-	    user2Pass
-
-	    adminPass
+	    password
 
 	szerepek
-
-	    USER
 
 	    USER
 
@@ -114,6 +108,63 @@ Biztonsági beállítások
 Adatbázis UML diagram
 
 https://github.com/mrxaxen/finances/blob/develop/finances_diagram3.jpg
+
+**Frontend dokumentáció:**
+
+Fejlesztői nyelv
+
+	typescript
+
+Framework
+
+	Angular v6.14.4
+		Angular CLI 9.1.7
+	Node js v12.17.0
+	
+Könyvtárszerkezet
+	
+	client
+		e2e
+		src
+			app
+				login-form
+				routing
+				transaction-detail
+				transaction-form
+				transaction-list
+				transaction-statistics
+			assets
+			environments
+
+Frontend futtatása
+
+	**npm install** parancs futtatásával a modulok feltelepülnek
+	
+	**ng serve** parancs futtatásával elindul a compile
+	
+	Ezek után a http://localhost:4200/ címen indul a program helyi hálózaton
+
+Kliensoldali szolgáltatások
+
+	tranzkiók megekintése - bejlenkezés utána  kezdőképernyőn jelennek meg az eddig lezajlott tranzakciók
+	
+	statisztika - megmutatja, hogy eddig hány tranzakció zajlott le, és azt is, hogy a jeleleg mennyi pénzünk van
+	
+	tranzakciók módosítása - lehetőség van egyszerre egy tranzakciónak a nevének és/vagy az összegének a módosítására
+	
+	tranzakciók hozzáadása - új tranzakció felvétele az eddigiek közé
+	
+	részletek megtekintése - egy tranzakció címére kattintva, megtekinthető a részletes leírása
+	
+Tranzakció törlésének leírása:
+
+	A tranzakciók közül az egyiknek a jobb oldalán lévő "delete" gombra rákattintva, a "transaction-list" komponens "onDeleteClick"
+	függvénye meghívódik, majd ez triggel egy http hívást, ami hatására a backend jelet kap, hogy az adott tranzakciót törölnie kell 
+	a belső (h2) adatbázisából.
+	
+Felhasználói use-case diagram:
+	
+	https://github.com/mrxaxen/finances/blob/develop/allapot_diagram.jpg
 
 ### TransactionController search endpoint lefutása:
  - Az endpoint kap egy GET utasítást egy Transaction példánnyal ami jelen esetben egy blueprintként szolgál, tartalmazza a keresett entitás paramétereit
