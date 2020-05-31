@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col">
+    <h1 class="display-2">My transactions</h1>
+    <h2>Current Budget: {{currentBudget}}</h2>
+    <h2>Number of transactions: {{numberOfTransactions}}</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Change</th>
+          <th scope="col">Creation date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of transactions" (click)="onSelectTransaction(transaction)" [class.table-info]="transaction === selectedTransaction" >
+          <th scope="row">{{ transaction.id }}</th>
+          <td>
+            <a [routerLink]="['/transactions', transaction.id]">
+              {{ transaction.title }}           
+             </a>
+            </td>
+          <td>{{ transaction.change }} </td>
+          <td>{{ transaction.creationDate }}</td>
+          <td>
+            <button (click)="onDeleteClick(transaction.id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col" *ngIf="selectedTransaction">
+    <transaction-form [transaction]="selectedTransaction" (submit)="onFormSubmit($event)"></transaction-form>
+  </div>
+</div>
+
+<button mat-raised-button color="primary" (click)="onNewClick()">New transaction</button>
+
+

@@ -1,0 +1,41 @@
+<form (submit)="onSubmit(issueForm)"
+      #issueForm="ngForm">
+  <div class="form-group">
+    <mat-form-field>
+      <input name="title"
+             [(ngModel)]="model.title"
+             matInput
+             type="text"
+             aria-describedby="titleHelp"
+             placeholder="Enter title"
+             required
+             #title="ngModel">
+      <mat-error *ngIf="title.invalid && (title.dirty || title.touched) && title.errors.required">
+        Title is required!
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+
+  <div class="form-group">
+    <!-- <small id="locationHelp" class="form-text text-muted">Give the location of the issue (e.g. labor)</small> -->
+    <mat-form-field>
+      <input name="change"
+             [(ngModel)]="model.change"
+             matInput
+             type="number"
+             aria-describedby="changeHelp"
+             placeholder="Enter change"
+             required
+             #change="ngModel">
+      <mat-error *ngIf="change.invalid && (change.dirty || change.touched) && change.errors.required">
+        Change is required!
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <button [disabled]="!issueForm.valid"
+          type="submit"
+          mat-raised-button
+          color="primary">Save transaction</button>
+</form>

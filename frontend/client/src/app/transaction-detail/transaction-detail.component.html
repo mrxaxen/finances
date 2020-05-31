@@ -1,0 +1,13 @@
+<h1 class="display-2">{{ transaction.title }}</h1>
+<dl class="row">
+  <dt class="col-sm-3">Id</dt>
+  <dd class="col-sm-9">{{ transaction.id }}</dd>
+  
+  <dt class="col-sm-3">Change</dt>
+  <dd class="col-sm-9">{{ transaction.change }}</dd>
+  
+  <dt class="col-sm-3">Creation date</dt>
+  <dd class="col-sm-9">{{ transaction.creationDate }}</dd>
+  
+</dl>
+<button mat-raised-button routerLink="/transactions">Back</button>

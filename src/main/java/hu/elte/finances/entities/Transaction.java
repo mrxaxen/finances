@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,12 +22,16 @@ import org.hibernate.annotations.CreationTimestamp;
 @AllArgsConstructor
 public class Transaction implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     
     @JoinColumn
     @ManyToOne
     private User user;
+
+    @Column
+    @NotNull
+    private String title;
     
     @Column
     @CreationTimestamp

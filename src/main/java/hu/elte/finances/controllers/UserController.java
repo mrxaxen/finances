@@ -6,54 +6,44 @@
 package hu.elte.finances.controllers;
 
 import hu.elte.finances.entities.User;
+import hu.elte.finances.security.AuthenticatedUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import hu.elte.finances.repositories.UserRepository;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.Optional;
+
+@CrossOrigin
 @Controller
-@RequestMapping("users")
+@RequestMapping("/users")
 public class UserController {
+
     @Autowired
-    private UserRepository repository;
+    private BCryptPasswordEncoder passwordEncoder;
 
-    @GetMapping("/")
-    public String home(){
-        return "home.jsp";
-    }
-    
-    @GetMapping("")
-    public ResponseEntity<Iterable<User>> getAll() {
-        return ResponseEntity.ok(repository.findAll());
-    }
-   
-    @GetMapping("/{id}")
-    public ResponseEntity<User> get(@PathVariable Long id) {
-        return ResponseEntity.ok(repository.findById(id).get());
-    }
+    @Autowired
+    private AuthenticatedUser authenticatedUser;
 
-    /*@PostMapping("")
-    public RepsonseEntity<Foo> post(@RequestBody Foo foo) {}*/
+    @Autowired
+    private UserRepository userRepository;
 
-    @DeleteMapping("/del-{id}")
-    public ResponseEntity delete(@PathVariable Long id) {
-        repository.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @PutMapping("/update-{id}")
-    public ResponseEntity<User> put(@PathVariable Long id, @RequestBody User newUser) {
-        User entity = repository.findById(id).get();
-        if(entity != null) {
-            newUser.setId(entity.getId());
+    @PostMapping("register")
+    public ResponseEntity<User> register(@RequestBody User user) {
+        Optional<User> oUser = userRepository.findByUsername(user.getUsername());
+        if (oUser.isPresent()) {
+            return ResponseEntity.badRequest().build();
         }
-        entity = repository.save(newUser);
-        return ResponseEntity.ok(entity);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setEnabled(true);
+        user.setRole(User.Role.ROLE_USER);
+        return ResponseEntity.ok(userRepository.save(user));
+    }
+
+    @PostMapping("login")
+    public ResponseEntity login(@RequestBody User user) {
+        return ResponseEntity.ok(authenticatedUser.getUser());
     }
 }

@@ -6,63 +6,74 @@
 package hu.elte.finances.controllers;
 
 import hu.elte.finances.entities.Transaction;
+import hu.elte.finances.entities.User;
+import hu.elte.finances.security.AuthenticatedUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import hu.elte.finances.repositories.TransactionRepository;
 import hu.elte.finances.specifications.TransactionSpecification;
 import java.util.List;
-import org.springframework.data.jpa.domain.Specification;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import java.util.Optional;
 
+import org.springframework.data.jpa.domain.Specification;
+
+@CrossOrigin
 @RestController
-@RequestMapping("transactions")
+@RequestMapping("/transactions")
 public class TransactionController {
     @Autowired
-    private TransactionRepository repository;
-    
+    private TransactionRepository transactionRepository;
+
+
+    @Autowired
+    private AuthenticatedUser authenticatedUser;
+
     @GetMapping("")
     public ResponseEntity<Iterable<Transaction>> getAll() {
-        return ResponseEntity.ok(repository.findAll());
+        // Just test, later will be used
+        User user = authenticatedUser.getUser();
+        return ResponseEntity.ok(transactionRepository.findAll());
     }
-    
+
     @GetMapping("/{id}")
-    public ResponseEntity<Transaction> get(@PathVariable Long id) {
-        return ResponseEntity.ok(repository.findById(id).get());
-    }
-    
-    @GetMapping("/search")
-    public ResponseEntity<List<Transaction>> search(@ModelAttribute Transaction trans) {
-        Specification<Transaction> spec = new TransactionSpecification(trans);
-        return ResponseEntity.ok(repository.findAll(spec));
-    }
-
-    @PostMapping("/create")
-    public ResponseEntity<Transaction> post(@RequestBody Transaction trans) {
-        repository.save(trans);
-        return ResponseEntity.noContent().build();
-    }
-
-    @DeleteMapping("/del-{id}")
-    public ResponseEntity delete(@PathVariable Long id) {
-        repository.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @PutMapping("/update-{id}")
-    public ResponseEntity<Transaction> put(@PathVariable Long id, @RequestBody Transaction newTransaction) {
-        Transaction entity = repository.findById(id).get();
-        if(entity != null) {
-            newTransaction.setId(entity.getId());
+    public ResponseEntity<Transaction> get(@PathVariable Integer id) {
+        Optional<Transaction> transaction = transactionRepository.findById(id);
+        if (transaction.isPresent()) {
+            return ResponseEntity.ok(transaction.get());
+        } else {
+            return ResponseEntity.notFound().build();
         }
-        entity = repository.save(newTransaction);
-        return ResponseEntity.ok(entity);
+    }
+
+    @PostMapping("")
+    public ResponseEntity<Transaction> post(@RequestBody Transaction transaction) {
+        System.out.println(transaction);
+        Transaction savedTransaction = transactionRepository.save(transaction);
+        return ResponseEntity.ok(savedTransaction);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Transaction> put(@RequestBody Transaction transaction, @PathVariable Integer id) {
+        Optional<Transaction> oTransaction = transactionRepository.findById(id);
+        if (oTransaction.isPresent()) {
+            transaction.setId(id);
+            return ResponseEntity.ok(transactionRepository.save(transaction));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable Integer id) {
+        Optional<Transaction> oIssue = transactionRepository.findById(id);
+        if (oIssue.isPresent()) {
+            System.out.println(oIssue);
+            transactionRepository.deleteById(id);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
