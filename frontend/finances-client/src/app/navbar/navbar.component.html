@@ -3,7 +3,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+  <div *ngIf="authService.isLoggedIn">
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -12,9 +12,12 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/view-report">View Report</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" >Login</a>
-        </li>
-      </ul>
+        <span>Hello, {{authService.user.username}}!</span>
+        <button mat-button (click)="logout()">Logout</button>
+      </ul> 
     </div>
+  </div>
+  <div *ngIf="!authService.isLoggedIn">
+    <button mat-button routerLink="/login">Login</button>
+  </div>
   </nav>
