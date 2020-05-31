@@ -5,6 +5,7 @@ import { TransactionListComponent } from '../transaction-list/transaction-list.c
 import { AddTransactionComponent } from '../add-transaction/add-transaction.component';
 import { ViewReportComponent } from '../view-report/view-report.component';
 import { TransactionDetailsComponent } from '../transaction-details/transaction-details.component'
+import { AuthGuard } from '../auth.guard';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   },
   {
     path: 'transactions',
-    component: TransactionListComponent
+    component: TransactionListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'add-transaction',
