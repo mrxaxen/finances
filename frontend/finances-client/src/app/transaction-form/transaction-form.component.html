@@ -1,12 +1,13 @@
-<form>
-    <div class="form-group">
+<form (submit)="submit(transactionForm)" #transactionForm="ngForm">
+   <div class="form-group">
       <mat-form-field>
         <input name="title"
-               [value]="transaction.title"
+               [(ngModel)]="model.title"
                matInput
                type="text"
                aria-describedby="titleHelp"
-               placeholder="Enter title">
+               placeholder="Enter title"
+               required>
       </mat-form-field>
     </div>
   
@@ -16,10 +17,11 @@
       <mat-form-field>
         <input
           name="change"
-          [value]="transaction.change"
+          [(ngModel)]="model.change"
           matInput type="number"
           aria-describedby="changeHelp"
-          placeholder="Enter amount">
+          placeholder="Enter amount"
+          required>
       </mat-form-field>
     </div>
 
@@ -28,14 +30,14 @@
         <mat-form-field>
           <input
             name="creationDate"
-            [value]="transaction.creationDate"
+            [(ngModel)]="model.creationDate"
             matInput type="string"
             aria-describedby="creationDateHelp"
-            placeholder="Enter date">
+            placeholder="Enter date"
+            required>
         </mat-form-field>
       </div>
     
 
-    
-    <button type="submit" mat-raised-button color="primary" routerLink="/transactions">Save new transaction</button>
+      <button [disabled]="!transactionForm.valid" type="submit" mat-raised-button color="primary">Save new transaction</button>
   </form>
