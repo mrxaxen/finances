@@ -30,6 +30,6 @@
 
   <div class="row">
     <div class="col" *ngIf="selectedTransaction">
-      <transaction-form [transaction]="selectedTransaction"></transaction-form >
+      <transaction-form [transaction]="selectedTransaction" (onSubmit)="onFormSubmit($event)"></transaction-form >
     </div>
   </div>
