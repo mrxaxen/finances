@@ -27,3 +27,9 @@
       </table>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col" *ngIf="selectedTransaction">
+      <transaction-form [transaction]="selectedTransaction"></transaction-form >
+    </div>
+  </div>

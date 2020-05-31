@@ -1,1 +1,41 @@
-<p>transaction-form works!</p>
+<form>
+    <div class="form-group">
+      <mat-form-field>
+        <input name="title"
+               [value]="transaction.title"
+               matInput
+               type="text"
+               aria-describedby="titleHelp"
+               placeholder="Enter title">
+      </mat-form-field>
+    </div>
+  
+    
+    <div class="form-group">
+      <!-- <small id="locationHelp" class="form-text text-muted">Give the location of the issue (e.g. labor)</small> -->
+      <mat-form-field>
+        <input
+          name="change"
+          [value]="transaction.change"
+          matInput type="number"
+          aria-describedby="changeHelp"
+          placeholder="Enter amount">
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+        <!-- <small id="locationHelp" class="form-text text-muted">Give the location of the issue (e.g. labor)</small> -->
+        <mat-form-field>
+          <input
+            name="creationDate"
+            [value]="transaction.creationDate"
+            matInput type="string"
+            aria-describedby="creationDateHelp"
+            placeholder="Enter date">
+        </mat-form-field>
+      </div>
+    
+
+    
+    <button type="submit" mat-raised-button color="primary" routerLink="/transactions">Save new transaction</button>
+  </form>

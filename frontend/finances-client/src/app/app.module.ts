@@ -13,7 +13,6 @@ import { TransactionDetailsComponent } from './transaction-details/transaction-d
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TransactionFormComponent } from './transaction-form/transaction-form.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,8 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     RoutingModule,
     MatFormFieldModule,
-    MatInputModule,
-    BrowserAnimationsModule
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
