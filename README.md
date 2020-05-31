@@ -118,7 +118,9 @@ Fejlesztői nyelv
 Framework
 
 	Angular v6.14.4
+	
 		Angular CLI 9.1.7
+		
 	Node js v12.17.0
 	
 Könyvtárszerkezet
@@ -164,7 +166,7 @@ Tranzakció törlésének leírása:
 	
 Felhasználói use-case diagram:
 	
-	https://github.com/mrxaxen/finances/blob/develop/allapot_diagram.jpg
+https://github.com/mrxaxen/finances/blob/develop/allapot_diagram.jpg
 
 ### TransactionController search endpoint lefutása:
  - Az endpoint kap egy GET utasítást egy Transaction példánnyal ami jelen esetben egy blueprintként szolgál, tartalmazza a keresett entitás paramétereit
