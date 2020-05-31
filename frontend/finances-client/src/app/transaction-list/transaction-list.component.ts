@@ -8,9 +8,15 @@ import { TransactionService } from '../transaction.service'
   styleUrls: ['./transaction-list.component.css']
 })
 export class TransactionListComponent{
-  private transactions:Transaction[]=[];
+  public transactions:Transaction[]=[];
+  selectedTransaction: Transaction;
+
   constructor(
     private transactionService:TransactionService ){ 
       this.transactions = transactionService.getTransactions();
     };
+
+  onSelectTransaction(transaction:Transaction){
+    this.selectedTransaction=transaction;
+  }
 }

@@ -11,7 +11,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let transaction of transactions" >
+          <tr *ngFor="let transaction of transactions"
+            (click)="onSelectTransaction(transaction)"
+              [class.table-info]="transaction === selectedTransaction" >
             <th scope="row">{{ transaction.id }}</th>
             <td>
               <a [routerLink]="['/transactions', transaction.id]">
