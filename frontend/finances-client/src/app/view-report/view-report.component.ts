@@ -10,10 +10,17 @@ import { Report } from '../report';
 })
 export class ViewReportComponent {
   //TODO: improve reports
-  reports:Report[];
-  constructor() {
-    let transactions:TransactionListComponent=new TransactionListComponent();
-    console.log(transactions);
-   }
+  reports:Report[]=[
+    {
+      id:1,
+      year:2020,
+      month:5,
+      numberOfTransactions:1,
+      incomes:10000,
+      expenses:1000,
+      monthlyBalance:9000,
+      userId:1,
+    },
+  ];
 
 }

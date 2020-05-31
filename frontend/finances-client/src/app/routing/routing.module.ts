@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router'; 
 import { TransactionListComponent } from '../transaction-list/transaction-list.component';
 import { AddTransactionComponent } from '../add-transaction/add-transaction.component';
+import { ViewReportComponent } from '../view-report/view-report.component';
 
 
 const routes: Routes = [
@@ -19,10 +20,10 @@ const routes: Routes = [
     path: 'add-transaction',
     component: AddTransactionComponent
   },
-  /*{
+  {
     path: 'view-report',
-    component: IssueDetailComponent
-},*/
+    component: ViewReportComponent
+},
 ];
 
 

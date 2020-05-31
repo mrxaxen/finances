@@ -10,10 +10,4 @@ export class Report {
     expenses:number=0;
     monthlyBalance:number=0;
     userId:number=0;
-    //TODO: improve report class
-    constructor(year:number,month:number,transactions:Transaction[]){
-        transactions.forEach(function (transaction) {
-            console.log(transaction);
-          }); 
-    }
 }
