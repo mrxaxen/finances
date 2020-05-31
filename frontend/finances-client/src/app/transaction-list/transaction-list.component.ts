@@ -13,21 +13,42 @@ export class TransactionListComponent{
 
   constructor(
     private transactionService:TransactionService ){ 
-      this.transactions = transactionService.getTransactions();
+      transactionService.getTransactions().then((data)=>{
+        this.transactions=data;
+        console.log(data);      
+      });
+      
     };
 
   onSelectTransaction(transaction:Transaction){
     this.selectedTransaction=transaction;
   }
-
+/*
   onFormSubmit(transaction: Transaction) {
     if (transaction.id > 0) {
       this.transactionService.updateTransaction(transaction);
     } 
     this.selectedTransaction = null;
-  }
+  }*/
   
   onNewClick() {
     this.selectedTransaction = new Transaction();
+  }
+
+  public async onDeleteClick(id: number): Promise<void> {
+    await this.transactionService.deleteTransaction(id);
+    this.transactions = await this.transactionService.getTransactions();
+    //this.filter();
+  }
+
+  public async onFormSubmit(transaction: Transaction): Promise<void> {
+    if (transaction.id > 0) {
+      await this.transactionService.updateTransaction(transaction);
+      this.transactions = await this.transactionService.getTransactions();
+    } else {
+      await this.transactionService.createTransaction(transaction);
+      this.transactions = await this.transactionService.getTransactions();
+    }
+    this.selectedTransaction = null;
   }
 }
