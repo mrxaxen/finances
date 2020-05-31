@@ -10,6 +10,9 @@ import { AddTransactionComponent } from './add-transaction/add-transaction.compo
 import { ViewReportComponent } from './view-report/view-report.component';
 import { TransactionDetailsComponent } from './transaction-details/transaction-details.component';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +25,9 @@ import { TransactionDetailsComponent } from './transaction-details/transaction-d
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RoutingModule
+    RoutingModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
