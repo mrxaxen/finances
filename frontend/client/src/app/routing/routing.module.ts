@@ -5,6 +5,7 @@ import { LoginFormComponent } from '../login-form/login-form.component';
 import { TransactionDetailComponent } from '../transaction-detail/transaction-detail.component';
 import { TransactionFormComponent } from '../transaction-form/transaction-form.component';
 import { TransactionListComponent } from '../transaction-list/transaction-list.component';
+import { TransactionStatisticsComponent } from '../transaction-statistics/transaction-statistics.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginFormComponent
+  },
+  {
+    path: 'statistics',
+    component:TransactionStatisticsComponent
   }
 ];
 

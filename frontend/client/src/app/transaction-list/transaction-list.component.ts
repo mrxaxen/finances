@@ -27,6 +27,7 @@ export class TransactionListComponent implements OnInit {
     this.setCurrentBudget();
     this.setNumberOfTransactions();
     this.latestId=this.getLatestId();
+    this.setMonth();
   }
 
   public onSelectTransaction(issue: Transaction): void {
@@ -46,6 +47,7 @@ export class TransactionListComponent implements OnInit {
           console.log(transaction);
           await this.transactionService.createTransaction(transaction);
           this.transactions = await this.transactionService.getTransactions();
+          transaction.month=new Date(transaction.creationDate).getMonth()+"."+new Date(transaction.creationDate).getDay();
       }
     }
     this.setCurrentBudget();
@@ -80,5 +82,11 @@ export class TransactionListComponent implements OnInit {
 
   public getLatestId():number{
       return this.transactions[this.transactions.length-1].id;
+  }
+
+  public setMonth():void{
+    this.transactions.forEach(element => {
+      element.month=new Date(element.creationDate).getMonth()+"."+new Date(element.creationDate).getDay();
+    });
   }
 }

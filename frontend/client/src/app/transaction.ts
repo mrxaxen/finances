@@ -6,5 +6,6 @@ export class Transaction {
     change: number = 0;
     creationDate: Date;
     user:User;
+    month:string;
   }
   
