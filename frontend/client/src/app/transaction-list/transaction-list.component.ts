@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Transaction } from '../transaction';
 import { TransactionService } from '../transaction.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'transaction-list',
@@ -12,9 +13,12 @@ export class TransactionListComponent implements OnInit {
   public selectedTransaction: Transaction;
   public numberOfTransactions:number=0;
   public currentBudget:number=0;
+  public object:Object=new Object;
+  public latestId:number=0;
 
   constructor(
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    public authService: AuthService
   ) {
   }
 
@@ -22,6 +26,7 @@ export class TransactionListComponent implements OnInit {
     this.transactions = await this.transactionService.getTransactions();
     this.setCurrentBudget();
     this.setNumberOfTransactions();
+    this.latestId=this.getLatestId();
   }
 
   public onSelectTransaction(issue: Transaction): void {
@@ -33,10 +38,15 @@ export class TransactionListComponent implements OnInit {
       await this.transactionService.updateTransaction(transaction);
       this.transactions = await this.transactionService.getTransactions();
     } else {
-      transaction.id=this.transactions[this.transactions.length-1].id+1;
-      transaction.creationDate=new Date();
-      await this.transactionService.createTransaction(transaction);
-      this.transactions = await this.transactionService.getTransactions();
+      this.latestId++;
+      if(this.latestId==this.getLatestId()+1){
+          transaction.id=this.latestId;
+          transaction.creationDate=new Date();
+          transaction.user=this.authService.user;
+          console.log(transaction);
+          await this.transactionService.createTransaction(transaction);
+          this.transactions = await this.transactionService.getTransactions();
+      }
     }
     this.setCurrentBudget();
     this.setNumberOfTransactions();
@@ -53,6 +63,7 @@ export class TransactionListComponent implements OnInit {
     this.selectedTransaction=null;
     this.setCurrentBudget();
     this.setNumberOfTransactions();
+    this.latestId=this.getLatestId();
   }
 
   public setNumberOfTransactions():void{
@@ -65,5 +76,9 @@ export class TransactionListComponent implements OnInit {
       sum+=element.change;
     });
     this.currentBudget= sum;
+  }
+
+  public getLatestId():number{
+      return this.transactions[this.transactions.length-1].id;
   }
 }

@@ -22,6 +22,7 @@ export class TransactionFormComponent {
     if (!form.valid) {
       return;
     }
+    console.log(this.model);
     this.submit.emit(this.model);
   }
 

@@ -9,6 +9,10 @@ import hu.elte.finances.entities.Transaction;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
+import java.util.Optional;
+
 public interface TransactionRepository extends CrudRepository<Transaction, Integer>, JpaSpecificationExecutor<Transaction> {
-    
+    List<Transaction> findAllByUserId(int id);
+    Optional<Transaction> findByIdAndUserId(int id, int userId);
 }

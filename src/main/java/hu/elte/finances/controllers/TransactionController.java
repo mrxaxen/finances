@@ -33,12 +33,14 @@ public class TransactionController {
     public ResponseEntity<Iterable<Transaction>> getAll() {
         // Just test, later will be used
         User user = authenticatedUser.getUser();
-        return ResponseEntity.ok(transactionRepository.findAll());
+        return ResponseEntity.ok(transactionRepository.findAllByUserId(user.getId()));
+        //return ResponseEntity.ok(transactionRepository.findAll());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Transaction> get(@PathVariable Integer id) {
-        Optional<Transaction> transaction = transactionRepository.findById(id);
+        User user = authenticatedUser.getUser();
+        Optional<Transaction> transaction = transactionRepository.findByIdAndUserId(id,user.getId());
         if (transaction.isPresent()) {
             return ResponseEntity.ok(transaction.get());
         } else {

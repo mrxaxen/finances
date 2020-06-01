@@ -1,7 +1,10 @@
 package hu.elte.finances.controllers;
 
 import hu.elte.finances.entities.MonthlyStatistics;
+import hu.elte.finances.entities.User;
 import hu.elte.finances.repositories.MonthlyStatisticsRepository;
+import hu.elte.finances.repositories.UserRepository;
+import hu.elte.finances.security.AuthenticatedUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,31 +16,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("statistics")
+@RequestMapping("/statistics")
 public class MonthlyStatisticsController {
     @Autowired
     private MonthlyStatisticsRepository repository;
 
+    @Autowired
+    private AuthenticatedUser authenticatedUser;
+
     @GetMapping("")
     public ResponseEntity<Iterable<MonthlyStatistics>> getAll() {
+        User user = authenticatedUser.getUser();
         return ResponseEntity.ok(repository.findAll());
     }
-
+/*
     @GetMapping("/get{id}")
     public ResponseEntity<MonthlyStatistics> get(@PathVariable Long id) {
         return ResponseEntity.ok(repository.findById(id).get());
     }
 
-    /*@PostMapping("/post")
+    @PostMapping("/post")
     public RepsonseEntity<MonthlyStatistics> post(@RequestBody MonthlyStatistics mstat) {
         return ResponseEntity.badRequest().build();
-    }*/
+    }
     
     @DeleteMapping("/del{id}")
     public ResponseEntity delete(@PathVariable Long id) {
         repository.deleteById(id);
         return ResponseEntity.noContent().build();
-    }
+    }*/
     
     //Statisztikát manuálisan hozzáadni nem fogunk
     /*@PutMapping("/put{id}")

@@ -5,6 +5,7 @@
  */
 package hu.elte.finances.controllers;
 
+import hu.elte.finances.entities.Transaction;
 import hu.elte.finances.entities.User;
 import hu.elte.finances.security.AuthenticatedUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
 
     @PostMapping("register")
     public ResponseEntity<User> register(@RequestBody User user) {
